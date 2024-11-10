@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: TanduriTrial
+  datasource:
+    url: jdbc:postgresql://localhost:5432/TanduriTrailDB
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+

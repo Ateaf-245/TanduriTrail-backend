@@ -1,0 +1,20 @@
+package com.ateaf.tanduritrial.modal;
+
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Validated
+@Embeddable
+public class Address {
+    private String street;
+    private String houseNumber;
+    private String zipCode;
+}
