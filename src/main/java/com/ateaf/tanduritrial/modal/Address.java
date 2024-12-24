@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 @Embeddable
 public class Address {
     private String street;
-    private String houseNumber;
-    private String zipCode;
+    private String city;
+    private String state;
+    private String zip;
 }

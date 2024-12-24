@@ -1,12 +1,14 @@
 package com.ateaf.tanduritrial.modal;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 @Data
@@ -15,30 +17,13 @@ import java.util.Date;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "users")
-public class User {
+public class UserEmailOTP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private String password;
-    private String firstName;
-    private String lastName;
-
-    private BigInteger phone;
-
-    @Column( unique = true, nullable = false)
+    private Integer Userid;
     private String email;
-
-    @Column(nullable = false)
-    private Character status;       // Y - Active , N - inActive
-
-    @Embedded
-    private Address address;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
-    private Role role;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -47,7 +32,3 @@ public class User {
     @LastModifiedDate
     private Date modifiedDate;
 }
-//    @Lob
-//    @Basic(fetch = FetchType.LAZY)
-//    @Column(name = "image")
-//    private byte[] image;
