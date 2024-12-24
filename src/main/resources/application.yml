@@ -14,3 +14,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG  # You can set specific log levels for packages (e.g., web-related logs)
+  file:
+    name: logs/tanduritrial.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
