@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial.customValidation;
+package com.ateaf.tanduritrail.customValidation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
