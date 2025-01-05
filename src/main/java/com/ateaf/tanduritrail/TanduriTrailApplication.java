@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial;
+package com.ateaf.tanduritrail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class TanduriTrialApplication {
+public class TanduriTrailApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TanduriTrialApplication.class, args);
+		SpringApplication.run(TanduriTrailApplication.class, args);
 	}
 
 }
