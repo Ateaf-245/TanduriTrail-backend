@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial.modal;
+package com.ateaf.tanduritrail.modal;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,7 +19,8 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence")
+    @SequenceGenerator(name = "my_sequence", sequenceName = "my_sequence", allocationSize = 1)
     private Integer id;
     private String password;
     private String firstName;

@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial.modal;
+package com.ateaf.tanduritrail.modal;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
