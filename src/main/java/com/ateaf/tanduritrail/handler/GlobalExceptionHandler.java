@@ -1,8 +1,11 @@
-package com.ateaf.tanduritrial.handler;
+package com.ateaf.tanduritrail.handler;
 
-import com.ateaf.tanduritrial.exception.UserRoleNotFoundException;
+import com.ateaf.tanduritrail.exception.UserAlreadyExistsException;
+import com.ateaf.tanduritrail.exception.UserNotFoundException;
+import com.ateaf.tanduritrail.exception.UserRoleNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,11 +18,26 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserRoleNotFoundException.class)
     public ResponseEntity<String> userRoleNotFoundHandler(UserRoleNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<String> UserAlreadyExistsHandler(UserAlreadyExistsException exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> UserAlreadyExistsHandler(UserNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<String> UsernameNotFoundHandler(UsernameNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> userRoleNotFoundHandler(MethodArgumentNotValidException exception){
+    public ResponseEntity<ErrorResponse> userNotFoundHandler(MethodArgumentNotValidException exception){
         var errors = new HashMap<String,String>();
 
         exception.getBindingResult().getAllErrors()

@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial.handler;
+package com.ateaf.tanduritrail.handler;
 
 import java.util.Map;
 

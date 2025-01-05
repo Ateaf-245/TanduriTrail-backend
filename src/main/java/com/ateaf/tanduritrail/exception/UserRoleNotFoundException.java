@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial.exception;
+package com.ateaf.tanduritrail.exception;
 
 public class UserRoleNotFoundException extends RuntimeException {
 
