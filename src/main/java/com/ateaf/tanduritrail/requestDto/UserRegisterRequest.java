@@ -1,9 +1,8 @@
-package com.ateaf.tanduritrial.requestDto;
+package com.ateaf.tanduritrail.requestDto;
 
-import com.ateaf.tanduritrial.customValidation.MinPhone;
-import com.ateaf.tanduritrial.modal.Address;
+import com.ateaf.tanduritrail.customValidation.MinPhone;
+import com.ateaf.tanduritrail.modal.Address;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +13,7 @@ public record UserRegisterRequest(
         String firstName,
 
         @NotEmpty(message = "last name is required")
-        String lastname,
+        String lastName,
 
         @NotEmpty(message = "password is required")
         String password,
@@ -27,7 +26,8 @@ public record UserRegisterRequest(
         @Email(message = "Email id is not valid")
         String email,
 
-        Integer roleId,
+        @NotNull
+        String roleName,
 
         Address address
 ) {
