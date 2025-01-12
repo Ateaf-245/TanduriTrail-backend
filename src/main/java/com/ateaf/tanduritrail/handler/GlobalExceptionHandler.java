@@ -1,8 +1,6 @@
 package com.ateaf.tanduritrail.handler;
 
-import com.ateaf.tanduritrail.exception.UserAlreadyExistsException;
-import com.ateaf.tanduritrail.exception.UserNotFoundException;
-import com.ateaf.tanduritrail.exception.UserRoleNotFoundException;
+import com.ateaf.tanduritrail.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,6 +31,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<String> UsernameNotFoundHandler(UsernameNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ImageUploadFailedException.class)
+    public ResponseEntity<String> ImageUploadFailedHandler(ImageUploadFailedException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ImageNotFoundException.class)
+    public ResponseEntity<String> ImageNotFoundHandler(ImageNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 

@@ -16,6 +16,9 @@ spring:
   app:
     jwtSecret: mySecretKey1238634hdfisouhovrhfhewlrher8yerruewewr435t54v
 
+upload:
+  directory: C:\Users\Ateaf\Documents\Projects\TanduriTrail project\upload
+
 logging:
   level:
     root: INFO
