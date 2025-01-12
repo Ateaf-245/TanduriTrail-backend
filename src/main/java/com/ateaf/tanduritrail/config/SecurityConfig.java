@@ -47,7 +47,7 @@ public class SecurityConfig {
                     CorsConfiguration config =new CorsConfiguration();
                     config.addAllowedOrigin("http://localhost:3000");
                     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
-                    config.setAllowedHeaders(List.of("Authentication","Content-Type"));
+                    config.setAllowedHeaders(List.of("Authorization","Content-Type"));
                     return  config;
                 }))
                 .exceptionHandling( exception -> exception.authenticationEntryPoint(unAuthorizedException))
