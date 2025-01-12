@@ -26,7 +26,7 @@ public class UserService {
     private final UserEmailVerificationRepository emailVerificationRepository;
     private final UserMapper mapper;
 
-    public UserResponse registerUser(UserRegisterRequest request){
+    public String registerUser(UserRegisterRequest request){
         log.info("Register User request received : " +request.toString());
 
         if(userRepository.existsByEmail(request.email()) )
@@ -35,7 +35,7 @@ public class UserService {
         User user =   userRepository.save(mapper.toUser(request));
         emailVerificationRepository.save(mapper.toEmailVerification(user.getId(), user.getEmail()));
         log.info("User register completed successfully, Id: {} ", user.getId());
-        return mapper.fromUser(user);
+        return user.getEmail();
     }
 
     public List<UserResponse> getAllUsers() {
@@ -53,7 +53,10 @@ public class UserService {
                 .map(mapper::fromUser)
                 .orElseThrow(() -> new UserNotFoundException("No User present with the Id :"+id));
     }
-
+    public UserResponse getUserByUsername(String username) {
+        log.info("Fetch user by id request received :: username: "+username);
+        return mapper.fromUser(userRepository.findByEmail(username));
+    }
     public List<UserResponse> getAllBuyers() {
        return userRepository.findAll()
                 .stream()

@@ -61,9 +61,9 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegisterRequest request) {
-        UserResponse user  = userService.registerUser(request);
-        String jwt = jwtUtils.generateToken(user.email());
-        return new ResponseEntity<>(new RegistrationResponse(jwt,user.email(), user), HttpStatus.CREATED);
+        String username  = userService.registerUser(request);
+        String jwt = jwtUtils.generateToken(username);
+        return new ResponseEntity<>(new RegistrationResponse(jwt,username), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(@RequestBody UserRequest userRequest) {
@@ -83,6 +83,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable Integer id) {
         return ResponseEntity.ok(userService.getUserById(id));
+    }
+
+    @GetMapping("/load/{username}")
+    public ResponseEntity<UserResponse> getUserByUsername(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getUserByUsername(username));
     }
 
     @GetMapping("/buyer")
