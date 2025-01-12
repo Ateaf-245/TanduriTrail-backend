@@ -1,4 +1,4 @@
-package com.ateaf.tanduritrial;
+package com.ateaf.tanduritrail;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
